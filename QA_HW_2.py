@@ -139,12 +139,16 @@ else: print("False")
 
 print("Input a password:")
 word = sorted(str(input()))
+while word == []:
+    if word == []:
+        print("Input a correct password:")
+        word = sorted(str(input()))
+rusNo=True
 ball0 = 0
 ball1 = 0
 ball2 = 0
 ball3 = 0
 ball4 = 0
-rusNo=True
 if len(word) >= 6:
     ball0 = 1
 for n in list("0123456789"):
