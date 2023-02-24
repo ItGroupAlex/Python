@@ -52,9 +52,10 @@ l = ['webtest1@gmail.com',
      ]
 
 l3=[]
+text="test"
 for x in l:
-    if x.find("test"):
-        l3.append(x)
+    if text in x:
+         l3.append(x)
 print(l3)
 
 # 4. Найти самое маленькое число в списке
