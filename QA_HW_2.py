@@ -91,21 +91,12 @@ else:print("It`s wrong!")
 
 print("Input a word:")
 word = input().upper()
-l=list(word)
-r=l.copy()
-x_count=0
-d = {}
-for x in word:
-     while r.count(str(x)):
-         r.remove(str(x))
-         x_count+=1
-     d[x] = x_count
-     x_count=0
-     r=l.copy()
-for k in list(d):
-    if d[k] == 1:
-        del d[k]
-print(d)
+l = {}
+word_set = set(word)
+for x in word_set:
+        if x in word and word.count(x) > 1:
+            l[x] = word.count(x)
+print(l)
 
 # 8. Напишите функцию, которая принимает строки.
 # Она должна вернуть False, если в строке содержится две одинаковые буквы,
