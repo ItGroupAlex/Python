@@ -90,11 +90,22 @@ else:print("It`s wrong!")
 # которые встречаются больше чем 1 раз.
 
 print("Input a word:")
-word = sorted(str(input()).upper())
-NoDubl = set(word)
-CountYesDubl = len(word)
-CountNoDubl = len(NoDubl)
-print(CountYesDubl-CountNoDubl)
+word = input().upper()
+l=list(word)
+r=l.copy()
+x_count=0
+d = {}
+for x in word:
+     while r.count(str(x)):
+         r.remove(str(x))
+         x_count+=1
+     d[x] = x_count
+     x_count=0
+     r=l.copy()
+for k in list(d):
+    if d[k] == 1:
+        del d[k]
+print(d)
 
 # 8. Напишите функцию, которая принимает строки.
 # Она должна вернуть False, если в строке содержится две одинаковые буквы,
