@@ -99,23 +99,17 @@ for x in word_set:
 print(l)
 
 # 8. Напишите функцию, которая принимает строки.
-# Она должна вернуть False, если в строке содержится две одинаковые буквы,
+# Она должна вернуть False, если в строке содержится две одинаковые буквы в слове,
 # а если таких слов нет — True.
 
-# no_duplicate_letters("Здравствуйте, Александра") ➞ False
-# Две в в «Здравствуйте», три a в «Александра».
+# print(no_duplicate_letters('Здравствуйте, Александра'), '\n') 
+# Две буквы "в" в "Здравствуйте," 
+# False
 
-# no_duplicate_letters("Всегда дожимай до конца") ➞ True
-# Две в в «Здравствуйте», три a в «Александра».
+# print(no_duplicate_letters('Всегда дожимай до конца'), '\n')
+# True
 
-print("Input a word2:")
-word = sorted(str(input()).upper())
-NoDubl = set(word)
-CountYesDubl = len(word)
-CountNoDubl = len(NoDubl)
-if CountYesDubl-CountNoDubl == 0:
-    print("True")
-else: print("False")
+редактируется
 
 
 # 9. Напишите функцию, которая проверяет сложность пароля. Функция проверяет ряд условий и оценивает сложность пароля.
