@@ -51,12 +51,12 @@ l = ['webtest1@gmail.com',
      'supportonlinetest@gmail.com'
      ]
 
-l3=[]
+l2=[]
 text="test"
 for x in l:
     if text in x:
-         l3.append(x)
-print(l3)
+         l2.append(x)
+print(l2)
 
 # 4. Найти самое маленькое число в списке
 # l = [3,0,4,5,8,9,10,44,22,50,-1,79,54,-28,91]
