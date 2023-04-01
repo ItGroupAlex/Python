@@ -137,4 +137,4 @@ while count == 0:
         print("Введите положительное число.")
         summa = input()
 
-# Задача 4 выгружена в исполняемый файл CE.exe
+# Задача 4 выгружена в исполняемый файл CE.exe по инструкции https://www.youtube.com/watch?v=CgCJwDjm_Cw&t=321s
