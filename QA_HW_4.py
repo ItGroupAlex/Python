@@ -84,6 +84,8 @@ print("\nКонсоль закроется через 10 сек...")
 import time
 time.sleep(10)
 
+# Задача 3 выгружена в исполняемый файл HW_4_3rd_0.exe по инструкции https://www.youtube.com/watch?v=CgCJwDjm_Cw&t=321s
+
 # 2) В виде функций - код разбит на функции. Отдельные функции можно вынести в другие .py файлы и вызывать их в main.py предвварительно импортируя в main.py.
 
 # Создаем файл currency.py для хранения функций
@@ -100,7 +102,7 @@ def close(h):
     import time
     time.sleep(h)
 
-# Создаем файл HW_4_3rd_def.py куда проимпортируем функцию
+# Создаем файл HW_4_3rd_def.py куда проимпортируем функции
 from currency import convert, close
 
 print("Введите положительное число")
@@ -123,7 +125,7 @@ while m or m == "":
 
 close(7)
 
-# Задача 3 выгружена в исполняемый файл CE_0.exe по инструкции https://www.youtube.com/watch?v=CgCJwDjm_Cw&t=321s
+# Задача 3 выгружена в исполняемый файл HW_4_3rd_def.exe
 
 # Задача №4
 # Обменник. Скрипт запускается в консоли и работает постоянно. Остановится нажатием ctrl+c.
@@ -141,9 +143,7 @@ close(7)
 #     7. После сообщеня об ошибке, скрипт должен автоматом вернуться к шагу 1.
 #     8. Валюту пользователя определите сами.
 
-
-
-
+# 1) В процедурном виде (весь код в одной процедуре).
 count = 0
 while count == 0:
     print("Выберите валюту, введите на выбор: \nUSD, EUR, CHF, GBP либо CNY")
@@ -180,4 +180,52 @@ while count == 0:
         print("Введите положительное число.")
         summa = input()
 
-# Задача 4 выгружена в исполняемый файл CE.exe по инструкции https://www.youtube.com/watch?v=CgCJwDjm_Cw&t=321s
+# Задача 4 выгружена в исполняемый файл HW_4_4th_0.exe
+
+# 2) В виде функций - код разбит на функции. Отдельные функции можно вынести в другие .py файлы и вызывать их в main.py предвварительно импортируя в main.py.
+
+# Дополняем ранее созданный файл currency.py для хранения функций
+def convert1(currency, summa):
+    while summa or summa == "":
+        if summa == "":
+            print("Вы ввели пустое поле")
+        elif bool(summa.count("-")):
+            print("Вы ввели число меньше 0")
+        elif summa == "0":
+            print("Вы ввели число равное 0")
+        elif summa.isdigit() or bool(summa.count(".")):
+            summa = float(summa)
+            print("Вы ввёли", "%.2f" % summa, currency)
+            if currency == "USD":
+                print("Сумма в USD =", round(summa * 1, 2),)
+            elif currency == "EUR":
+                print("Сумма в USD =", round(summa * 1.2, 2), )
+            elif currency == "CHF":
+                print("Сумма в USD =", round(summa * 1.3, 2), )
+            elif currency == "GBP":
+                print("Сумма в USD =", round(summa * 1.4, 2), )
+            elif currency == "CNY":
+                print("Сумма в USD =", round(summa * 1.5, 2), )
+            break
+        else:
+            print("Вы ввели не число")
+        print("Введите положительное число.")
+        summa = input()
+
+
+# Создаем файл HW_4_4th_def.py куда проимпортируем функции
+from currency import convert1
+
+count = 0
+while count == 0:
+    print("\nВыберите валюту, введите на выбор: \nUSD, EUR, CHF, GBP либо CNY")
+    currency = input()
+    l = ['USD', 'EUR', 'CHF', 'GBP', 'CNY']
+    while not l.count(currency):
+        print("Введите корректно валюту из предложенного списка \nUSD, EUR, CHF, GBP либо CNY")
+        currency = input()
+    print("Введите сумму")
+    summa = input()
+    convert1(currency, summa)
+
+# Задача 4 выгружена в исполняемый файл HW_4_4th_def.exe
