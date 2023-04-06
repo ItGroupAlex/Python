@@ -1,7 +1,6 @@
-# В самом терминале PyCharm предварительно:
-#
-# pip install psycopg2
-# pip install names
+# in terminal PyCharm 
+    # pip install psycopg2
+    # pip install names
 
 import psycopg2
 import names
