@@ -34,7 +34,7 @@ try:
 # insert data into a table employees
     #70 random employee_name's
     with connection.cursor() as cursor:
-        for i in range(1, 70):
+        for i in range(0, 70):
             employee_name = names.get_full_name()
             cursor.execute(
                 """
