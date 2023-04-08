@@ -1,4 +1,4 @@
-# in terminal PyCharm 
+# in terminal PyCharm
     # pip install psycopg2
     # pip install names
 
@@ -30,7 +30,7 @@ try:
 
 
 
-# insert data into a table employees
+# insert data into a table employees (1st table)
     #70 random employee_name's
     with connection.cursor() as cursor:
         for i in range(0, 70):
@@ -44,7 +44,7 @@ try:
             )
             print("[INFO]"+"Insert of "+employee_name + "is added")
 
-# counter (def), insert data into a table employee_salary
+# counter (def), insert data into a table employee_salary (3rd table)
     #   №1-30(z)         random unique employee_id's from massive (1-70)
     #   №30(z)-40(z1)    random unique employee_id's from massive (71-1000)
     #       + random salary_id
@@ -104,12 +104,69 @@ try:
         print(counter)
 
 
+# insert data into a table roles_employee (5th table)
+    #   FOREIGN KEY
+
+    z = 40
+
+    with connection.cursor() as cursor:
+        def employees_id():
+            cursor.execute(
+                """
+                SELECT id FROM employees
+                """)
+            return (cursor.fetchall())
+
+        def role_id():
+            cursor.execute(
+                """
+                SELECT id FROM roles
+                """)
+            return (cursor.fetchall())
+
+        def count():
+            cursor.execute(
+                """
+                SELECT COUNT(*) FROM roles_employee
+                """)
+            return (cursor.fetchone()[0])
+
+        employees_id_list = []
+        for i in employees_id():
+            employees_id_list.append(i[0])
+        random.shuffle(employees_id_list)
+
+
+        role_id_list = []
+        for i in role_id():
+            role_id_list.append(i[0])
+        random.shuffle(role_id_list)
+
+        counter = count()
+        m = 0
+        random_index = random.randrange(len(role_id_list))
+        while counter < z:
+            employee_id = employees_id_list[m]
+            role_id = role_id_list[random_index]
+            cursor.execute(
+                """
+                INSERT INTO roles_employee (employee_id, role_id)
+                values (%s, %s);
+                """,
+                (employee_id, role_id)
+            )
+            print("[INFO]" + "Insert of " + str(employee_id) + " (employee_id) is added")
+            m += 1
+            counter = count()
+            random_index = random.randrange(len(role_id_list))
+
+        print(counter)
 
 
 
 # error SQL
 except Exception as _ex:
-    print("[INFO] Error while working with PostgreSQL", _ex)
+    print("[INFO] Error while working with PostgreSQL:", _ex)
 # close connection
 finally:
     if connection:
