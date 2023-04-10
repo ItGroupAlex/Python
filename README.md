@@ -11,3 +11,8 @@ QA HomeWork:
    + HW_4_4th_def.exe (4rd task - with import def)
    
 AutoFilling.py - filling of SQL postgres base  [(with help of source)](https://www.youtube.com/watch?v=UZ7vCwbnn2c "link") 
+
+* KKAL - програма рассчета калорийности порций различных типов продуктов
+   + техзадание  
+   + KKAL.py  
+   + KKAL.exe
