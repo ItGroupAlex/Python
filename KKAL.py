@@ -76,10 +76,12 @@ l = {
 'Колбаса сервелат':461,
 'Колбаски охотничьи':463
 }
+
 # получаем список ключей JSON l
 l_keys = []
 for x in l:
     l_keys.append(x)
+    
 # получаем список ключей JSON l переведенных в lowercase
 lowercase_l_keys = [x.lower() for x in l_keys]
 
@@ -90,7 +92,7 @@ for x in l_keys:
 for x in lowercase_l_keys:
     l_keys_add_low.append(x)
 
-# перевод JSON в lowercase
+# перевод JSON в lowercase в отдельный JSON
 lowercase_l = {key.lower(): val for key, val in l.items()}
 
 # сам скрипт рассчета
