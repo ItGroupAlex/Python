@@ -13,8 +13,5 @@ QA HomeWork:
 AutoFilling.py - filling of SQL postgres base  [(with help of source)](https://www.youtube.com/watch?v=UZ7vCwbnn2c "link") 
 
 * KKAL - програма рассчета калорийности порций различных типов продуктов
-   * [техзадание](https://app.swaggerhub.com/apis/anastasiya-kukayeva/Web_services/1.0.0#/info "link") 
-      * KKAL.py (десктопная версия)  
-      * KKAL.exe (десктопная версия) 
-      * KKAL_Web.py (Web-версия с использованием Flask и Jinja2 + ответы на Web-запросы в виде JSON)  
+
       
