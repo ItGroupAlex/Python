@@ -12,6 +12,4 @@ QA HomeWork:
    
 AutoFilling.py - filling of SQL postgres base  [(with help of source)](https://www.youtube.com/watch?v=UZ7vCwbnn2c "link") 
 
-* KKAL - програма рассчета калорийности порций различных типов продуктов
-
-      
+[(KKAL - програма рассчета калорийности порций различных типов продуктов)](https://github.com/ItGroupAlex/Python/tree/main/KKAL "link") 
