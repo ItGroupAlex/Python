@@ -1,6 +1,5 @@
  # KKAL - програма рассчета калорийности порций различных типов продуктов
     
-    [(with help of source)](https://www.youtube.com/watch?v=UZ7vCwbnn2c "link") 
-    * fbf [(техзадание)](https://apphttps://github.com/ItGroupAlex/Python/blob/main/KKAL/KKAL_desktop.py "link")  
-      * KKAL.exe (десктопная версия) [+ видео]:(https://github.com/ItGroupAlex/Python/blob/main/KKAL/Video/KKAL_desktop.mp4 "link") 
-      * [KKAL_Web.py]:https://github.com/ItGroupAlex/Python/blob/main/KKAL/KKAL_web.py "link" (Web-версия с использованием Flask и Jinja2 [+ видео]:(https://github.com/ItGroupAlex/Python/blob/main/KKAL/Video/KKAL_web.mp4 "link")  + ответы на Web-запросы в виде JSON [+ видео]:(https://github.com/ItGroupAlex/Python/blob/main/KKAL/Video/KKAL_Web_postman.mp4 "link") )  
+* [(техзадание)](https://apphttps://github.com/ItGroupAlex/Python/blob/main/KKAL/KKAL_desktop.py "link")  
+ * KKAL.exe [(десктопная версия)](https://github.com/ItGroupAlex/Python/blob/main/KKAL/kkal.exe "link") [(видео)](https://github.com/ItGroupAlex/Python/blob/main/KKAL/Video/KKAL_desktop.mp4 "link")  
+ * [(KKAL_Web.py)](https://github.com/ItGroupAlex/Python/blob/main/KKAL/KKAL_web.py "link") (Web-версия с использованием Flask и Jinja2 [(видео)](https://github.com/ItGroupAlex/Python/blob/main/KKAL/Video/KKAL_web.mp4 "link")  + ответы на Web-запросы в виде JSON [(видео)](https://github.com/ItGroupAlex/Python/blob/main/KKAL/Video/KKAL_Web_postman.mp4 "link") )  
