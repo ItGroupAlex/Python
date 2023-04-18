@@ -8,6 +8,7 @@
 <h2>Программа расчета калорийности списка продуктов</font></h2>
 <h3>*Выберите тип продукта из списка:</h3>
 
+
 <form method="post" action="/add_message">
     <select name="text" method="GET" action="/"}>
 	{% for product in products %}
@@ -19,6 +20,9 @@
     <button type="submit">Рассчитать калорийность и добавить в список</button>
 </form>
 
+
+
+
 <h3>Список выбранных продуктов:</h3>
 <form method="POST" action="/del_messages">
     <button type="submit">Очистить список</button>
@@ -27,6 +31,10 @@
 <div>{{ message.text }}&nbsp;{{ message.massa }} грамм: <b>{{ message.kkal }} ККал.</b></div>
 {% endfor %}
 <h3>Сумма калорий в данном наборе продуктов {{summa}} Ккал</h3>
+
+
+
+
 
 </body>
 </html>
