@@ -99,17 +99,19 @@ l_keys = []
 for x in l:
     l_keys.append(x)
 
-
+# главная страница - отправка списка в drop-down-menu
 @app.route('/', methods=['GET'])
 def dropdown():
     return render_template('main.html', products=l_keys)
 
-
+# главная страница - отправка в html переменных для вывода в список подобранных продуктов
 @app.route('/main', methods=['GET'])
 def main():
     return render_template('main.html', messages=messages, summa = str(round(sum(summa_l), 2)), products=l_keys, mes_massa=mes_massa)
 
-
+# накопительное добавление списка продуктов
+json_added_messeges = {}
+count_mess = 0
 @app.route('/add_message', methods=['POST'])
 def add_message():
     global mes_massa
@@ -137,28 +139,66 @@ def add_message():
                 messages.append(Message(text, massa, kkal))
                 summa_l.append(kkal)
                 mes_massa = ""
+                namedtuple_mes = namedtuple('_', ['text', 'massa', 'kkal'])(
+                    text,
+                    int(massa),
+                    kkal
+                )
+                json_added_mes = namedtuple_mes._asdict()
+                global count_mess
+                count_mess += 1
+                json_added_messeges[count_mess]=json_added_mes
             else:
                 mes_massa = "вы ввели не число"
             break
-
     return redirect(url_for('main'))
 
 
+# Очистка списка подобранных продуктов (кнопка в Web-интерфейсе)
 @app.route('/del_messages', methods=['POST'])
 def del_messages():
     global messages
     messages = []
     global summa_l
     summa_l = []
+    json_added_messeges.clear()
+    count = 0
     return redirect(url_for('main'))
+
 
 # JSON - Postman
 
+# очистка подобранного списка продуктов
+@app.route('/del_messages_req', methods=['POST'])
+def del_messages_req():
+    global messages
+    messages = []
+    global summa_l
+    summa_l = []
+    json_added_messeges.clear()
+    count = 0
+    json_clear ={}
+    # json_clear['Список выбранных продуктов:'] = json_added_messeges
+    req_clear_text = {"Список обнулён!":True, 'Список выбранных продуктов': json_added_messeges}
+    return req_clear_text
+
+
+# обработка запроса на отпраку JSON с накопленнным списком продуктов через WEB-интерфейс
+@app.route('/show_messages_req', methods=['POST'])
+def show_messages_reg():
+    summa = str(round(sum(summa_l), 2))
+    added_messages = {'Список выбранных продуктов': json_added_messeges, 'Сумма калорий в выбранных продуктах(ККал)': summa}
+    return added_messages
+
+
+# вывод списка продуктов
 @app.route('/list', methods=['GET'])
 def list():
-    dict_food = ['Справочник каллорийности продуктов доступных для подбора:', l0]
+    dict_food = {'Справочник каллорийности продуктов доступных для подбора': l0}
     return  dict_food
 
+
+# Вывод калорийности по выбранному типу продукта
 
 # перевод JSON в lowercase в отдельный JSON
 lowercase_l = {key.lower(): val for key, val in l0.items()}
@@ -187,4 +227,3 @@ def search():
         return 'Не выбран тип продукта в параметре "food", введите значение на русском языке!'
     else:
         return 'Вы не ввели в запросе GET параметр типа продукта "food"!'
-
