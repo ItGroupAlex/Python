@@ -1,6 +1,6 @@
  # KKAL - програма рассчета калорийности порций различных типов продуктов
     
-* [техзадание](https://app.swaggerhub.com/apis/anastasiya-kukayeva/Web_services/1.0.0#/info "link") - дорабатывается
+* [техзадание](https://app.swaggerhub.com/apis/anastasiya-kukayeva/Web_services/1.0.0#/Products/getAllProducts "link") - дорабатывается
  * [KKAL.exe (десктопная версия)](https://github.com/ItGroupAlex/Python/blob/main/KKAL/kkal.exe "link") 
     * [KKAL_desktop.py](https://github.com/ItGroupAlex/Python/blob/main/KKAL/KKAL_desktop.py "link") 
     * [видео функционала](https://github.com/ItGroupAlex/Python/blob/main/KKAL/Video/KKAL_desktop.mp4 "link")  
