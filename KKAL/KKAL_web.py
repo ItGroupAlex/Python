@@ -124,8 +124,6 @@ def add_message():
         while massa or massa == "":
             if massa == "":
                 mes_massa = "вы не выбрали вес продукта"
-            elif massa == "":
-                mes_massa = "вы не выбрали вес"
             elif bool(massa.count("-")):
                 mes_massa = "вы ввели вес меньше 0"
             elif massa == "0":
