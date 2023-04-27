@@ -27,19 +27,30 @@ try:
 
         print(f"Server version: {cursor.fetchone()}")
 
+    employees_must = 70
+
     # insert data into a table employees (1st table)
     # 70 random employee_name's
     with connection.cursor() as cursor:
-        for i in range(0, 70):
-            employee_name = names.get_full_name()
+        def count_id_employees():
             cursor.execute(
                 """
-                INSERT INTO employees (employee_name)
-                values (%s);
-                """,
-                [employee_name]
-            )
-            print("[INFO]" + "Insert of " + employee_name + "is added")
+                SELECT COUNT(*) FROM employees
+                """)
+            return (cursor.fetchone()[0])
+
+        while count_id_employees() < employees_must:
+            for i in range(0, employees_must):
+                employee_name = names.get_full_name()
+                cursor.execute(
+                    """
+                    INSERT INTO employees (employee_name)
+                    values (%s);
+                    """,
+                    [employee_name]
+                )
+                print("[INFO]" + "Insert of " + employee_name + "is added")
+
 
     # counter (def), insert data into a table employee_salary (3rd table)
     #   №1-30(z)         random unique employee_id's from massive (1-70)
@@ -61,13 +72,6 @@ try:
             cursor.execute(
                 """
                 SELECT COUNT(*) FROM salary
-                """)
-            return (cursor.fetchone()[0])
-
-        def count_id_employees():
-            cursor.execute(
-                """
-                SELECT COUNT(*) FROM employees
                 """)
             return (cursor.fetchone()[0])
 
