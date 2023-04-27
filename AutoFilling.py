@@ -1,6 +1,6 @@
 # in terminal PyCharm
-    # pip install psycopg2
-    # pip install names
+# pip install psycopg2
+# pip install names
 
 import psycopg2
 import names
@@ -16,6 +16,7 @@ try:
 
     connection.autocommit = True
 
+
     # the cursor for perfoming database operations
     # cursor = connection.cursor()
 
@@ -26,12 +27,8 @@ try:
 
         print(f"Server version: {cursor.fetchone()}")
 
-
-
-
-
-# insert data into a table employees (1st table)
-    #70 random employee_name's
+    # insert data into a table employees (1st table)
+    # 70 random employee_name's
     with connection.cursor() as cursor:
         for i in range(0, 70):
             employee_name = names.get_full_name()
@@ -42,9 +39,9 @@ try:
                 """,
                 [employee_name]
             )
-            print("[INFO]"+"Insert of "+employee_name + "is added")
+            print("[INFO]" + "Insert of " + employee_name + "is added")
 
-# counter (def), insert data into a table employee_salary (3rd table)
+    # counter (def), insert data into a table employee_salary (3rd table)
     #   №1-30(z)         random unique employee_id's from massive (1-70)
     #   №30(z)-40(z1)    random unique employee_id's from massive (71-1000)
     #       + random salary_id
@@ -60,9 +57,22 @@ try:
                 """)
             return (cursor.fetchone()[0])
 
+        def count_idsalary():
+            cursor.execute(
+                """
+                SELECT COUNT(*) FROM salary
+                """)
+            return (cursor.fetchone()[0])
+
+        def count_id_employees():
+            cursor.execute(
+                """
+                SELECT COUNT(*) FROM employees
+                """)
+            return (cursor.fetchone()[0])
 
 
-        l = random.sample(range(1, 70), z)
+        l = random.sample(range(1, count_id_employees()), z)
         print(l)
 
         counter = count()
@@ -70,7 +80,7 @@ try:
         m = 0
         while counter < z:
             employee_id = l[m]
-            salary_id = random.randint(0, 70)
+            salary_id = random.randint(1, count_idsalary())
             cursor.execute(
                 """
                 INSERT INTO employee_salary (employee_id, salary_id)
@@ -83,14 +93,13 @@ try:
             counter = count()
         print(counter)
 
-
-        l1 = random.sample(range(71, 1000), z1-z)
+        l1 = random.sample(range((count_id_employees()+1), 1000), z1 - z)
         print(l1)
 
         m = 0
         while counter < z1:
             employee_id = l1[m]
-            salary_id = random.randint(0, 70)
+            salary_id = random.randint(1, count_idsalary())
             cursor.execute(
                 """
                 INSERT INTO employee_salary (employee_id, salary_id)
@@ -103,8 +112,7 @@ try:
             counter = count()
         print(counter)
 
-
-# insert data into a table roles_employee (5th table)
+    # insert data into a table roles_employee (5th table)
     #   FOREIGN KEY
 
     z = 40
@@ -117,12 +125,14 @@ try:
                 """)
             return (cursor.fetchall())
 
+
         def role_id():
             cursor.execute(
                 """
                 SELECT id FROM roles
                 """)
             return (cursor.fetchall())
+
 
         def count():
             cursor.execute(
@@ -131,11 +141,11 @@ try:
                 """)
             return (cursor.fetchone()[0])
 
+
         employees_id_list = []
         for i in employees_id():
             employees_id_list.append(i[0])
         random.shuffle(employees_id_list)
-
 
         role_id_list = []
         for i in role_id():
