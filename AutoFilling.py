@@ -61,7 +61,7 @@ try:
     z1 = 40
 
     with connection.cursor() as cursor:
-        def count():
+        def count_employee_salary():
             cursor.execute(
                 """
                 SELECT COUNT(*) FROM employee_salary
@@ -79,7 +79,7 @@ try:
         l = random.sample(range(1, count_id_employees()), z)
         print(l)
 
-        counter = count()
+        counter = count_employee_salary()
 
         m = 0
         while counter < z:
@@ -113,7 +113,7 @@ try:
             )
             print("[INFO]" + "Insert of " + str(employee_id) + " (employee_id) is added")
             m += 1
-            counter = count()
+            counter = count_employee_salary()
         print(counter)
 
     # insert data into a table roles_employee (5th table)
@@ -138,7 +138,7 @@ try:
             return (cursor.fetchall())
 
 
-        def count():
+        def count_id_roles_employee():
             cursor.execute(
                 """
                 SELECT COUNT(*) FROM roles_employee
@@ -156,7 +156,7 @@ try:
             role_id_list.append(i[0])
         random.shuffle(role_id_list)
 
-        counter = count()
+        counter = count_id_roles_employee()
         m = 0
         random_index = random.randrange(len(role_id_list))
         while counter < z:
@@ -171,7 +171,7 @@ try:
             )
             print("[INFO]" + "Insert of " + str(employee_id) + " (employee_id) is added")
             m += 1
-            counter = count()
+            counter = count_id_roles_employee()
             random_index = random.randrange(len(role_id_list))
 
         print(counter)
