@@ -10,7 +10,7 @@ try:
     # connect to exist database
     connection = psycopg2.connect(dbname="qa_ddl_33_134",
                                   user="padawan_user_134",
-                                  password="123",
+                                  password="148658",
                                   host="159.69.151.133",
                                   port="5056")
 
