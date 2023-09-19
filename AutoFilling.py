@@ -94,7 +94,7 @@ try:
             )
             print("[INFO]" + "Insert of " + str(employee_id) + " (employee_id) is added")
             m += 1
-            counter = count()
+            counter = count_employee_salary()
         print(counter)
 
         l1 = random.sample(range((count_id_employees()+1), 1000), z1 - z)
