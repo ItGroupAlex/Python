@@ -1,4 +1,9 @@
 from collections import namedtuple
+# (через Terminal окно)
+    #  python.exe -m pip install --upgrade pip   
+    #  pip install Jinja2
+    #  pip install Flask
+    #  pip install requests
 from jinja2 import Template, Environment, FileSystemLoader
 from flask import Flask, render_template, redirect, url_for, request, session, app
 import json, requests
