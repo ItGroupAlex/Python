@@ -94,7 +94,7 @@ word = input().upper()
 l = {}
 word_set = set(word)
 for x in word_set:
-        if x in word and word.count(x) > 1:
+        if word.count(x) > 1:
             l[x] = word.count(x)
 print(l)
 
