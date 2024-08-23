@@ -109,7 +109,18 @@ print(l)
 # print(no_duplicate_letters('Всегда дожимай до конца'), '\n')
 # True
 
-редактируется
+print("Input text:")
+text = input()
+text_words = text.split()
+undublicat = True
+for word in text_words:
+    for letter in word:
+        if word.count(letter) > 1:
+            print("False")
+            undublicat = False
+        break
+if undublicat == True:
+    print("True")
 
 
 # 9. Напишите функцию, которая проверяет сложность пароля. Функция проверяет ряд условий и оценивает сложность пароля.
