@@ -145,19 +145,27 @@ if undublicat == True:
 
 # Пароль не должен содержать кириллических символов
 
-print("Input a password:")
-word = sorted(str(input()))
-while word == []:
-    if word == []:
-        print("Input a correct password:")
-        word = sorted(str(input()))
-rusNo=True
 ball0 = 0
 ball1 = 0
 ball2 = 0
 ball3 = 0
 ball4 = 0
-if len(word) >= 6:
+word = []
+rusNo_c = 0
+print("Input a password:")
+while word == [] or rusNo_c > 0:
+    rusNo_c = 0
+    pw = input()
+    word = sorted(str(pw))
+    if word == []:
+        print("Password cannot be empty! Input a correct password:")
+    if word != []:
+        for n in list("йцукенгшщзхъфывапролджэячсмитьбю"):
+            if word.count(n):
+                rusNo_c += 1
+                print("WRONG!!! Password contains \"cyrillic\"! Input a correct password:")
+                break
+if len(word) >= 6 and rusNo_c == 0:
     ball0 = 1
 for n in list("0123456789"):
     if word.count(n):
@@ -171,12 +179,7 @@ for n in list("ABCDEFGHIJKLMNOPQRSTUVWXYZ"):
 for n in list("!@#$%^&*()-+"):
     if word.count(n):
         ball4=1
-for n in list("йцукенгшщзхъфывапролджэячсмитьбю"):
-    if word.count(n):
-        rusNo=False
 
-if rusNo==False:
-    print("WRONG!!! Password contains \"cyrillic\"!")
 balls = ball0+ball1+ball2+ball3+ball4
-if balls>0 and rusNo == True:
+if balls > 0 and rusNo_c == 0:
     print("Succses! Password balls: ", balls)
