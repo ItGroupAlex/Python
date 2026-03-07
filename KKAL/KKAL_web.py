@@ -1,12 +1,12 @@
 from collections import namedtuple
 # (через Terminal окно)
-    #  python.exe -m pip install --upgrade pip   
+    #  python.exe -m pip install --upgrade pip
     #  pip install Jinja2
     #  pip install Flask
     #  pip install requests
 from jinja2 import Template, Environment, FileSystemLoader
 from flask import Flask, render_template, redirect, url_for, request, session, app
-import json, requests
+
 
 
 
@@ -123,15 +123,15 @@ def add_message():
         massa = request.form['massa']
         while massa or massa == "":
             if massa == "":
-                mes_massa = "вы не выбрали вес продукта"
+                mes_massa = "вы не выбрали вес продукта, введите вес в граммах + уточните продукт"
             elif bool(massa.count("-")):
-                mes_massa = "вы ввели вес меньше 0"
+                mes_massa = "вы ввели вес меньше 0, введите вес в граммах + уточните продукт"
             elif massa == "0":
-                mes_massa = "вы ввели вес равный 0"
+                mes_massa = "вы ввели вес равный 0, введите вес в граммах + уточните продукт"
             elif is_part_in_list(massa, [",","."]):
-                mes_massa = "вы ввели не целое количество грамм"
+                mes_massa = "вы ввели не целое количество грамм, введите вес в граммах + уточните продукт"
             elif massa.isdigit() and int(massa) > 10000:
-                mes_massa = "ведрами есть нельзя) повторите ввод"
+                mes_massa = "ведрами есть нельзя), введите вес в граммах + уточните продукт"
             elif massa.isdigit() and int(massa) <= 10000:
                 kkal = round(int(massa) / 100 * l0.get(text), 2)
                 messages.append(Message(text, massa, kkal))
