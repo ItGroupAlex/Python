@@ -12,11 +12,6 @@ import json, requests
 
 app = Flask(__name__)
 
-
-if __name__ == '__main__':
-    app.run(debug=True)
-
-
 # функция определения наличия в заданном элементе str символа из списка
 def is_part_in_list(str_, words):
     for word in words:
@@ -230,3 +225,6 @@ def search():
         return 'Не выбран тип продукта в параметре "food", введите значение на русском языке!'
     else:
         return 'Вы не ввели в запросе GET параметр типа продукта "food"!'
+
+if __name__ == '__main__':
+    app.run(debug=True)
